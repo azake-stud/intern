@@ -3,12 +3,20 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>{% block title %}My shop{% endblock %}</title>
+    <title>{% block title %}My mini shop{% endblock %}</title>
     <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
 <body>
 <div id="header">
     <a href="/" class="logo">My shop (for internship)</a>
+    <span class="user">
+    {% if request.user.is_authenticated %} Салам {{ request.user.first_name }},
+    <a href="{% url "logout" %}">Выйти>></a>
+    <a href="{% url "edit" %}">Изменить</a>
+    {% else %}
+    <a href="{% url "login" %}">Вход</a>
+    {% endif %}
+    </span>
 </div>
 
 <div id="content">

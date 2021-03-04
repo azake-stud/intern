@@ -1,17 +1,14 @@
-# from django.conf.urls import  url
-from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import include, path
-# from django.conf.urls import include
-
-
-
+from django.contrib import admin
+from django.urls import path, include
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls')),
     path('', include('shop.urls', namespace='shop')),
-    path('account/', include('account.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:
